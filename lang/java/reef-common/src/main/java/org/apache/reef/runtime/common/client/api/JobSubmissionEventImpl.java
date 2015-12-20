@@ -38,6 +38,7 @@ public final class JobSubmissionEventImpl implements JobSubmissionEvent {
   private final Set<FileResource> globalFileSet;
   private final Set<FileResource> localFileSet;
   private final Optional<Integer> driverMemory;
+  private final Optional<String> driverNode;
   private final Optional<Integer> priority;
   private final Optional<String> queue;
   private final Optional<Boolean> preserveEvaluators;
@@ -51,6 +52,7 @@ public final class JobSubmissionEventImpl implements JobSubmissionEvent {
     this.globalFileSet = BuilderUtils.notNull(builder.globalFileSet);
     this.localFileSet = BuilderUtils.notNull(builder.localFileSet);
     this.driverMemory = Optional.ofNullable(builder.driverMemory);
+    this.driverNode = Optional.ofNullable(builder.driverNode);
     this.priority = Optional.ofNullable(builder.priority);
     this.preserveEvaluators = Optional.ofNullable(builder.preserveEvaluators);
     this.queue = Optional.ofNullable(builder.queue);
@@ -93,6 +95,11 @@ public final class JobSubmissionEventImpl implements JobSubmissionEvent {
   }
 
   @Override
+  public Optional<String> getDriverNode() {
+    return driverNode;
+  }
+
+  @Override
   public Optional<Integer> getPriority() {
     return priority;
   }
@@ -122,6 +129,7 @@ public final class JobSubmissionEventImpl implements JobSubmissionEvent {
     private Set<FileResource> globalFileSet = new HashSet<>();
     private Set<FileResource> localFileSet = new HashSet<>();
     private Integer driverMemory;
+    private String driverNode;
     private Integer priority;
     private String queue;
     private Boolean preserveEvaluators;
@@ -182,6 +190,14 @@ public final class JobSubmissionEventImpl implements JobSubmissionEvent {
      */
     public Builder setDriverMemory(final Integer driverMemory) {
       this.driverMemory = driverMemory;
+      return this;
+    }
+
+    /**
+     * @see JobSubmissionEvent#getDriverNode()
+     */
+    public Builder setDriverNode(final String driverNode) {
+      this.driverNode = driverNode;
       return this;
     }
 

@@ -83,6 +83,7 @@ final class JobSubmissionHelper {
     final JobSubmissionEventImpl.Builder jbuilder = JobSubmissionEventImpl.newBuilder()
         .setIdentifier(returnOrGenerateDriverId(injector.getNamedInstance(DriverIdentifier.class)))
         .setDriverMemory(injector.getNamedInstance(DriverMemory.class))
+        .setDriverNode(injector.getNamedInstance(DriverNode.class))
         .setUserName(System.getProperty("user.name"))
         .setPreserveEvaluators(preserveEvaluators)
         .setMaxApplicationSubmissions(maxAppSubmissions)

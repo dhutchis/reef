@@ -59,6 +59,11 @@ public final class DriverConfiguration extends ConfigurationModuleBuilder {
   public static final OptionalParameter<Integer> DRIVER_MEMORY = new OptionalParameter<>();
 
   /**
+   * The host on which to allocate the Driver. Value of ResourceRequest.getResourceName() for the AM container in YARN.
+   */
+  public static final OptionalParameter<String> DRIVER_NODE = new OptionalParameter<>();
+
+  /**
    * Files to be made available on the Driver and all Evaluators.
    */
   public static final OptionalParameter<String> GLOBAL_FILES = new OptionalParameter<>();
@@ -214,6 +219,7 @@ public final class DriverConfiguration extends ConfigurationModuleBuilder {
   public static final ConfigurationModule CONF = new DriverConfiguration().merge(DriverRuntimeConfiguration.CONF)
       .bindNamedParameter(DriverIdentifier.class, DRIVER_IDENTIFIER)
       .bindNamedParameter(DriverMemory.class, DRIVER_MEMORY)
+      .bindNamedParameter(DriverNode.class, DRIVER_NODE)
       .bindNamedParameter(DriverJobSubmissionDirectory.class, DRIVER_JOB_SUBMISSION_DIRECTORY)
       .bindNamedParameter(MaxApplicationSubmissions.class, MAX_APPLICATION_SUBMISSIONS)
       .bindSetEntry(JobGlobalFiles.class, GLOBAL_FILES)

@@ -70,6 +70,11 @@ public interface JobSubmissionEvent {
   Optional<Integer> getDriverMemory();
 
   /**
+   * @return Host on which to allocate the Driver
+   */
+  Optional<String> getDriverNode();
+
+  /**
    * @return Priority to be given to the Job
    */
   Optional<Integer> getPriority();

@@ -101,10 +101,15 @@ final class YarnJobSubmissionHandler implements JobSubmissionHandler {
       final JobFolder jobFolderOnDfs = userBoundJobSubmissionDirectory.isPresent()
           ? this.uploader.createJobFolder(userBoundJobSubmissionDirectory.get())
           : this.uploader.createJobFolder(submissionHelper.getApplicationId());
+      LOG.info("JobFolder is "+jobFolderOnDfs.getPath());
       final Configuration driverConfiguration = makeDriverConfiguration(jobSubmissionEvent, jobFolderOnDfs.getPath());
+      LOG.info("driverConfiguration is "+driverConfiguration);
       final File jobSubmissionFile = this.jobJarMaker.createJobSubmissionJAR(jobSubmissionEvent, driverConfiguration);
+      LOG.info("jobSubmissionFile is "+jobSubmissionFile.getCanonicalPath()+" and does it exist? "+jobSubmissionFile.exists());
       final LocalResource driverJarOnDfs =
           jobFolderOnDfs.uploadAsLocalResource(jobSubmissionFile, LocalResourceType.ARCHIVE);
+      LOG.info("driverJarOnDfs is "+driverJarOnDfs);
+      LOG.info("this.fileNames.getREEFFolderName() is "+this.fileNames.getREEFFolderName());
 
       submissionHelper
           .addLocalResource(this.fileNames.getREEFFolderName(), driverJarOnDfs)

@@ -24,6 +24,6 @@ import org.apache.reef.tang.annotations.NamedParameter;
 /**
  * The job submission directory.
  */
-@NamedParameter(doc = "The job submission directory prefix.", default_value = "/tmp")
+@NamedParameter(doc = "The job submission directory prefix.", default_value = "/home/gridsan/dhutchison/hdfs-lustre/hadooptmp")
 public final class JobSubmissionDirectoryPrefix implements Name<String> {
 }

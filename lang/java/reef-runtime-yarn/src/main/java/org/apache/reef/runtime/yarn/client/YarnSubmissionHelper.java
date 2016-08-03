@@ -263,6 +263,15 @@ public final class YarnSubmissionHelper implements Closeable{
 
   public void submit() throws IOException, YarnException {
 
+    LOG.info(
+        "YarnSubmissionHelper: launcherClazz commandPrefixList="+launcherClazz+" "+commandPrefixList+
+        "\nYarnSubmissionHelper: configurationFilePaths="+configurationFilePaths+
+        "\nYarnSubmissionHelper: classpath="+classpath+
+        "\nYarnSubmissionHelper: applicationSubmissionContext="+applicationSubmissionContext+
+        "\nYarnSubmissionHelper: driverStdoutFilePath="+driverStdoutFilePath+
+        "\nYarnSubmissionHelper: driverStderrFilePath="+driverStderrFilePath
+    );
+
     // SET EXEC COMMAND
     final List<String> launchCommand = new JavaLaunchCommandBuilder(launcherClazz, commandPrefixList)
         .setConfigurationFilePaths(configurationFilePaths)

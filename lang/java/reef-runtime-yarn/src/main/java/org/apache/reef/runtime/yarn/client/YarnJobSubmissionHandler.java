@@ -110,6 +110,12 @@ final class YarnJobSubmissionHandler implements JobSubmissionHandler {
           jobFolderOnDfs.uploadAsLocalResource(jobSubmissionFile, LocalResourceType.ARCHIVE);
       LOG.info("driverJarOnDfs is "+driverJarOnDfs);
       LOG.info("this.fileNames.getREEFFolderName() is "+this.fileNames.getREEFFolderName());
+      LOG.info("this.fileNames.getLocalFolderPath() is "+this.fileNames.getLocalFolderPath());
+      LOG.info("this.fileNames.getJobFolderPrefix() is "+this.fileNames.getJobFolderPrefix());
+      LOG.info("this.fileNames.getJarFileSuffix() is "+this.fileNames.getJarFileSuffix());
+      LOG.info("this.fileNames.getGlobalFolderPath() is "+this.fileNames.getGlobalFolderPath());
+      LOG.info("this.fileNames.getYarnBootstrapJobParamFilePath() is "+this.fileNames.getYarnBootstrapJobParamFilePath());
+      LOG.info("this.fileNames.getYarnBootstrapAppParamFilePath() is "+this.fileNames.getYarnBootstrapAppParamFilePath());
 
       submissionHelper
           .addLocalResource(this.fileNames.getREEFFolderName(), driverJarOnDfs)

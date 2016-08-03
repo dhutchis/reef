@@ -271,6 +271,7 @@ public final class YarnSubmissionHelper implements Closeable{
         "\nYarnSubmissionHelper: driverStdoutFilePath="+driverStdoutFilePath+
         "\nYarnSubmissionHelper: driverStderrFilePath="+driverStderrFilePath
     );
+    LOG.info("this.applicationSubmissionContext.getResource() = "+this.applicationSubmissionContext.getResource());
 
     // SET EXEC COMMAND
     final List<String> launchCommand = new JavaLaunchCommandBuilder(launcherClazz, commandPrefixList)
